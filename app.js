@@ -2,19 +2,19 @@ var fs = require('fs');
 var express = require('express');
 var https = require('https');
 var bodyParser = require('body-parser');
-var key = fs.readFileSync('./key.pem');
-var cert = fs.readFileSync('./cert.pem')
+var key = fs.readFileSync('./server.key');
+var cert = fs.readFileSync('./server.crt')
+var ca = fs.readFileSync('./ca.crt')
 var https_options = {
     key: key,
-    cert: cert
+    cert: cert,
+    ca: ca,
+    agent: false,
+    rejectUnauthorized: false,
 };
 var PORT = 8000;
 var HOST = 'localhost';
 app = express();
-
-app.configure(function(){
-    app.use(app.router);
-});
 
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(bodyParser.json());

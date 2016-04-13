@@ -2,8 +2,18 @@ var PORT = 8000;
 var HOST = 'localhost';
 var tls = require('tls');
 var fs = require('fs');
+var ca = fs.readFileSync('./ca.key');
+var key = fs.readFileSync('./test.key');
+var cert = fs.readFileSync('./test.crt');
 
-var options = { ca: [ fs.readFileSync('./cert.pem') ] };
+var options = { 
+		ca: [fs.readFileSync('./server.key')], 
+		cn: [HOST],
+		key: key,
+		cert: cert,
+		passphrase: '1234',
+		rejectUnauthorized: false,
+	      };
 var client = tls.connect(PORT, HOST, options, function() {
     if (client.authorized) {
         
