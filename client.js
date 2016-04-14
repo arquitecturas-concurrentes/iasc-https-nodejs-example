@@ -2,12 +2,12 @@ var PORT = 8000;
 var HOST = 'localhost';
 var tls = require('tls');
 var fs = require('fs');
-var ca = fs.readFileSync('./ca.key');
-var key = fs.readFileSync('./test.key');
-var cert = fs.readFileSync('./test.crt');
+var ca = fs.readFileSync('./keys/ca.key');
+var key = fs.readFileSync('./keys/test.key');
+var cert = fs.readFileSync('./keys/test.crt');
 
 var options = { 
-		ca: [fs.readFileSync('./server.key')], 
+		ca: [fs.readFileSync('./keys/server.key')], 
 		cn: [HOST],
 		key: key,
 		cert: cert,

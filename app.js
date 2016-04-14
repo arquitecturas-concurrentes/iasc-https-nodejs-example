@@ -2,9 +2,9 @@ var fs = require('fs');
 var express = require('express');
 var https = require('https');
 var bodyParser = require('body-parser');
-var key = fs.readFileSync('./server.key');
-var cert = fs.readFileSync('./server.crt')
-var ca = fs.readFileSync('./ca.crt')
+var key = fs.readFileSync('./keys/server.key');
+var cert = fs.readFileSync('./keys/server.crt')
+var ca = fs.readFileSync('./keys/ca.crt')
 var https_options = {
     key: key,
     cert: cert,
